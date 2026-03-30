@@ -1,0 +1,4 @@
+#EXTM3U
+#EXTINF:-1,TV3 Live
+#EXTVLCOPT:http-referrer=https://malaysia-tv.net/
+https://edge1.rtm.live/amlstviptv3/_definst_/amlstviptv3.smil/playlist.m3u8
