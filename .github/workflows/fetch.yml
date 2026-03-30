@@ -1,0 +1,23 @@
+name: TV3 Live
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Write TV3 M3U
+        run: |
+          echo "#EXTM3U" > tv3.m3u
+          echo "#EXTINF:-1,TV3 Live" >> tv3.m3u
+          echo "#EXTVLCOPT:http-referrer=https://malaysia-tv.net/" >> tv3.m3u
+          echo "https://edge1.rtm.live/amlstviptv3/_definst_/amlstviptv3.smil/playlist.m3u8" >> tv3.m3u
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: TV3 Live
+          file_pattern: tv3.m3u
